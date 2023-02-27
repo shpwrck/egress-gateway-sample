@@ -1,0 +1,41 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-egress-cluster1-1-16
+  namespace: gm-iop-1-16
+spec:
+  components:
+    egressGateways:
+    - enabled: true
+      k8s:
+        service:
+          ports:
+          - name: http
+            port: 80
+            targetPort: 8080
+          - name: https
+            port: 443
+            targetPort: 8443
+          - name: tls
+            port: 15443
+            targetPort: 15443
+          type: NodePort
+      name: istio-egressgateway-1-16
+      namespace: istio-egress
+  hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+  meshConfig:
+    trustDomain: cluster1
+  namespace: istio-system
+  profile: empty
+  revision: 1-16
+  tag: 1.16.0-solo
+  values:
+    gateways:
+      istio-egressgateway:
+        injectionTemplate: gateway
+    global:
+      configValidation: true
+      istioNamespace: istio-system
+      multiCluster:
+        clusterName: cluster1
+      network: cluster1

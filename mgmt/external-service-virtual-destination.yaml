@@ -1,0 +1,16 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: httpbin-external
+  namespace: gloo-mesh
+spec:
+  clientMode:
+    tlsTermination: {}
+  externalServices:
+  - labels:
+      service: httpbin
+  hosts:
+  - httpbin.external
+  ports:
+  - number: 80
+    protocol: HTTP

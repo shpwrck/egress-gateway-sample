@@ -1,0 +1,21 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: ExternalEndpoint
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.gloo.solo.io/v2","kind":"ExternalEndpoint","metadata":{"annotations":{},"labels":{"endpoint":"httpbin"},"name":"httpbin-external-endpoint","namespace":"gloo-mesh"},"spec":{"address":"httpbin.org","ports":[{"name":"http","number":80}]}}
+  creationTimestamp: "2023-02-25T00:47:03Z"
+  generation: 1
+  labels:
+    endpoint: httpbin
+  name: httpbin-external-endpoint
+  namespace: gloo-mesh
+  resourceVersion: "7296"
+  uid: 92f4e96d-c65c-446d-8c42-4290f1b297d4
+spec:
+  address: httpbin.org
+  ports:
+  - name: http
+    number: 80
+status:
+  global: {}

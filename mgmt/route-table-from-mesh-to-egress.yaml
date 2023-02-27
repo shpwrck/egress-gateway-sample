@@ -1,0 +1,20 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: httpbin-route-mesh
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - httpbin.external
+  http:
+  - forwardTo:
+      destinations:
+      - kind: VIRTUAL_DESTINATION
+        ref:
+          cluster: mgmt
+          name: egress-gateway
+          namespace: gloo-mesh
+    name: egress-gateway
+  workloadSelectors:
+  - selector:
+      namespace: default

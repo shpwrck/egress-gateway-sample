@@ -1,0 +1,32 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualGateway
+metadata:
+  name: east-west-gw
+  namespace: gloo-mesh
+spec:
+  listeners:
+  - allowedRouteTables:
+    - host: httpbin.external
+      selector:
+        workspace: all
+    appProtocol: HTTPS
+    http: {}
+    port:
+      number: 443
+    tls:
+      mode: ISTIO_MUTUAL
+  - allowedRouteTables:
+    - host: httpbin.external
+      selector:
+        workspace: all
+    appProtocol: TLS
+    http: {}
+    port:
+      number: 15443
+    tls:
+      mode: AUTO_PASSTHROUGH
+  workloads:
+  - selector:
+      cluster: cluster1
+      labels:
+        istio: eastwestgateway

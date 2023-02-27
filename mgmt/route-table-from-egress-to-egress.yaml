@@ -1,0 +1,26 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: egress-to-egress
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - httpbin.external
+  http:
+  - forwardTo:
+      destinations:
+      - kind: VIRTUAL_DESTINATION
+        port:
+          number: 80
+        ref:
+          cluster: mgmt
+          name: egress-gateway
+          namespace: gloo-mesh
+    name: httpbin-app
+  virtualGateways:
+  - cluster: mgmt
+    name: east-west-gw
+    namespace: gloo-mesh
+  workloadSelectors:
+  - selector:
+      namespace: istio-egress

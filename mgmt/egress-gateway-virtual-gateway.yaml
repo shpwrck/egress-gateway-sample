@@ -1,0 +1,20 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualGateway
+metadata:
+  name: egress-gw
+  namespace: gloo-mesh
+spec:
+  listeners:
+  - allowedRouteTables:
+    - host: '*.external'
+      selector:
+        workspace: all
+    http: {}
+    port:
+      number: 80
+    tls:
+      mode: ISTIO_MUTUAL
+  workloads:
+  - selector:
+      labels:
+        istio: egressgateway
