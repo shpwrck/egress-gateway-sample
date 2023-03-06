@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: httpbin-route-gateway
-  namespace: gloo-mesh
+  namespace: app1-configs
 spec:
   hosts:
   - httpbin.external
@@ -13,7 +13,7 @@ spec:
         ref:
           cluster: mgmt
           name: httpbin-external-service
-          namespace: gloo-mesh
+          namespace: app1-configs
     name: httpbin-app
   virtualGateways:
   - cluster: mgmt

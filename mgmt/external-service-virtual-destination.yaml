@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: VirtualDestination
 metadata:
   name: httpbin-external
-  namespace: gloo-mesh
+  namespace: app1-configs
 spec:
   clientMode:
     tlsTermination: {}

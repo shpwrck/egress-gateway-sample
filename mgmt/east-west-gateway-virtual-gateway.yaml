@@ -7,8 +7,6 @@ spec:
   listeners:
   - allowedRouteTables:
     - host: httpbin.external
-      selector:
-        workspace: all
     appProtocol: HTTPS
     http: {}
     port:

@@ -12,7 +12,10 @@ In this example, two clusters exist in separate networking regions but need acce
 
 - Gloo Mesh 2.2.4
 - Istio 1.16
-- Workspace selecting all namespaces across all clusters
+- 3 Workspaces
+  - ops
+  - app1
+  - app2
 - Workspace settings with federation and service isolation disabled
 - Root Trust Policy for clusters
 

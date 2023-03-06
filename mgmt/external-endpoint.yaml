@@ -9,7 +9,7 @@ metadata:
   labels:
     endpoint: httpbin
   name: httpbin-external-endpoint
-  namespace: gloo-mesh
+  namespace: app1-configs
   resourceVersion: "7296"
   uid: 92f4e96d-c65c-446d-8c42-4290f1b297d4
 spec:

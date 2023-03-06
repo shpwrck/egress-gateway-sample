@@ -12,7 +12,7 @@ spec:
   - number: 80
     protocol: HTTP
     targetPort:
-      name: http2
+      name: http
   services:
   - cluster: cluster1
     labels:

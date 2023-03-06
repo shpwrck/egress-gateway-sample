@@ -3,7 +3,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: istio-egressgateway-1-16-svc
-  namespace: default
+  namespace: app2
 spec:
   exportTo:
   - .
@@ -20,7 +20,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: istio-egressgateway-1-16-vd
-  namespace: default
+  namespace: app2
 spec:
   exportTo:
   - .

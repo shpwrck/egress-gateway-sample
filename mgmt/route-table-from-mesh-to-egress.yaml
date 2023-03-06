@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: httpbin-route-mesh
-  namespace: gloo-mesh
+  namespace: app1-configs
 spec:
   hosts:
   - httpbin.external
@@ -17,4 +17,7 @@ spec:
     name: egress-gateway
   workloadSelectors:
   - selector:
-      namespace: default
+      namespace: app1
+  - selector:
+      namespace: app2
+

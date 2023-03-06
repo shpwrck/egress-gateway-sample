@@ -7,8 +7,6 @@ spec:
   listeners:
   - allowedRouteTables:
     - host: '*.external'
-      selector:
-        workspace: all
     http: {}
     port:
       number: 80
