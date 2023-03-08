@@ -10,6 +10,8 @@ spec:
   - forwardTo:
       destinations:
       - kind: VIRTUAL_DESTINATION
+        port:
+          number: 80
         ref:
           cluster: mgmt
           name: egress-gateway

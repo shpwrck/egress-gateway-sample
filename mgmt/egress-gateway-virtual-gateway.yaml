@@ -12,6 +12,13 @@ spec:
       number: 80
     tls:
       mode: ISTIO_MUTUAL
+  - allowedRouteTables:
+    - host: '*.external'
+    http: {}
+    port:
+      number: 443
+    tls:
+      mode: ISTIO_MUTUAL
   workloads:
   - selector:
       labels:

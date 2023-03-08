@@ -13,6 +13,10 @@ spec:
     protocol: HTTP
     targetPort:
       name: http
+  - number: 443
+    protocol: HTTPS
+    targetPort:
+      name: https
   services:
   - cluster: cluster1
     labels:

@@ -35,8 +35,18 @@ In this example, two clusters exist in separate networking regions but need acce
   - egress-istio-operator.yaml
   - destination-rule-source-namespace.yaml
   - destination-rule-gateway-namespace.yaml
+  - tls-origination-destination-rule.yaml
+  - peerauthentication.yaml
 - Remote
   - destination-rule-source-namespace.yaml
+  - peerauthentication.yaml
+
+# Proof of Function
+
+Assuming all of the resources have been deployed appropriately, then a request to httpbin.external from the `app1` or `app2` workspace like `curl httpbin.external` should result in log messages on the egress gateway and a response code of `200`.
+
+To prove egress TLS origination, simply replace `SIMPLE` in `tls-origination-destination-rule.yaml` with `DISABLE` and perform a request as stated above.
+The result should contain this message: `The plain HTTP request was sent to HTTPS port`
 
 # Notes
 
@@ -45,4 +55,4 @@ In this example, two clusters exist in separate networking regions but need acce
 - The virtual gateways are using selectors on istio gateways that are automatically created. (there is no corresponding IOP)
 - East West gateways have an additional port 443, for tlsTermination
 - The SNI field on destination rules does limit the defined path per resource. (one gateway per SNI)
-- mTLS was not set up in the above example, but should be configurable with destinationrules. [link](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-tls-origination/#configure-mutual-tls-origination-for-egress-traffic-at-sidecar)
+- mTLS and egress TLS origination confirmed working
